@@ -14,15 +14,15 @@ module ClnkApi
 
     def info(url)
       validate_url(url)
-      short_url = url
+      self.short_url = url
       options = {:query=>{ :short_url=> url,:access_token=> @api_key} }
       response = self.class.get("/api/v1/links/info", options)
       handle_response(response)
     end
 
-    def expand(short_codes)
-
-      options = {:query=>{ :short_code=> short_codes,:access_token=> @api_key} }
+    def expand(short_code)
+      self.short_code = short_code
+      options = {:query=>{ :short_code=> short_code,:access_token=> @api_key} }
       response = self.class.get("/api/v1/links/expand", options)
       handle_response(response)
     end
