@@ -1,3 +1,4 @@
+require 'pry'
 module ClnkApi
   class Link 
     include HTTParty
@@ -63,7 +64,7 @@ module ClnkApi
 
     def build_response(response)
       unless response.body.strip.empty?
-        url_data = MultiJson.load(response.body)["data"] rescue {}
+        url_data = MultiJson.load(response.body)["data"] || {} rescue {}
         self.long_url = url_data["long_url"]
         self.short_url = url_data["short_url"]
         self.short_code = url_data["short_code"]
