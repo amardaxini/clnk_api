@@ -21,7 +21,7 @@ module ClnkApi
 
     def expand(short_codes)
 
-      options = {:query=>{ :short_codes=> short_codes,:access_token=> @api_key} }
+      options = {:query=>{ :short_code=> short_codes,:access_token=> @api_key} }
       @response = self.class.get("/api/v1/links/expand", options)
       handle_response(@response)
     end
