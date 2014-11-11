@@ -14,7 +14,12 @@ module ClnkApi
 
     def info(url)
       link = ClnkApi::Link.new(@api_key)
-      link.shorten(url)
+      link.info(url)
+      link
+    end
+    def expand(url)
+      link = ClnkApi::Link.new(@api_key)
+      link.expand(url)
       link
     end
   end
