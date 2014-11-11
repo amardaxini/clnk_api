@@ -3,7 +3,7 @@ module ClnkApi
   class Link 
     include HTTParty
     base_uri 'http://api.clnk.in'
-    attr_accessor :long_url, :short_url, :short_code,:api_key
+    attr_accessor :long_url, :short_url, :short_code,:api_key,:clicks
     def initialize(api_key)
       @api_key = api_key
     end
@@ -68,6 +68,8 @@ module ClnkApi
         self.long_url ||= url_data["long_url"]
         self.short_url ||= url_data["short_url"]
         self.short_code ||= url_data["short_code"]
+        self.clicks ||= url_data["clicks"]
+
       end
     end
 
