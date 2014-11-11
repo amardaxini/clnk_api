@@ -7,15 +7,15 @@ module ClnkApi
     end
 
     def shorten(url)
-      clnk_url = ClnkApi::Link.new(@api_key)
-      clnk_url.shorten(url)
-      clnk
+      link = ClnkApi::Link.new(@api_key)
+      link.shorten(url)
+      link
     end
 
     def info(url)
-      clnk_url = ClnkApi::Link.new(@api_key)
-      clnk_url.shorten(url)
-      clnk
+      link = ClnkApi::Link.new(@api_key)
+      link.shorten(url)
+      link
     end
   end
 end
