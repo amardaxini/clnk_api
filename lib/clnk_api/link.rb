@@ -2,8 +2,7 @@ module ClnkApi
   class Link 
     include HTTParty
     base_uri 'http://localhost:3001'
-    attr_accessor :long_url, :short_url, :short_code,:api_key,:response
-
+    attr_accessor :long_url, :short_url, :short_code,:api_key
     def initialize(api_key)
       @api_key = api_key
     end
@@ -33,8 +32,8 @@ module ClnkApi
       validate_url(url)
       long_url = url
       options = {:body=>{ :long_url=> long_url,:access_token=> @api_key} }
-      @response = self.class.post("/api/v1/links/shorten", options)
-      handle_response(@response)
+      response = self.class.post("/api/v1/links/shorten", options)
+      handle_response(response)
 
       
       
@@ -42,8 +41,8 @@ module ClnkApi
 
 
     def handle_response(response)
-      raise_errors(@response)
-      build_response
+      raise_errors(response)
+      build_response(response)
     end
 
     def raise_errors(response)
@@ -62,9 +61,9 @@ module ClnkApi
       end
     end
 
-    def build_response
-      unless @response.body.strip.empty?
-        url_data = MultiJson.load(@response.body)["data"] rescue {}
+    def build_response(response)
+      unless response.body.strip.empty?
+        url_data = MultiJson.load(response.body)["data"] rescue {}
         self.long_url = url_data["long_url"]
         self.short_url = url_data["short_url"]
         self.short_code = url_data["short_code"]
