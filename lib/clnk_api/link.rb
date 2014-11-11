@@ -2,7 +2,7 @@ require 'pry'
 module ClnkApi
   class Link 
     include HTTParty
-    base_uri 'http://localhost:3001'
+    base_uri 'http://api.clnk.in'
     attr_accessor :long_url, :short_url, :short_code,:api_key
     def initialize(api_key)
       @api_key = api_key

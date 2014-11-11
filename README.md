@@ -1,6 +1,6 @@
 # ClnkApi
 
-TODO: Write a gem description
+Clnk Shortner API
 
 ## Installation
 
@@ -20,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    clnk = ClnkApi::Clnk.new("AccessToken")
+    # Clnk::Link contains :short_url,:long_url,short_code
+    link = clnk.shorten(url) # return ClnkApi::Link
+    link = clnk.expand("shortcode") # return ClnkApi::Link
+    link = clnk.info("shorturl") # return ClnkApi::Link
+    
 
 ## Contributing
 
