@@ -1,4 +1,3 @@
-require 'pry'
 module ClnkApi
   class Link 
     include HTTParty
